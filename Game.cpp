@@ -3,7 +3,7 @@
 
 Game::Game()
 {
-	m_playerTank = nullptr;
+	m_gfx = nullptr;
 }
 
 
@@ -30,17 +30,6 @@ bool Game::initalize(HWND gameWindow)
 		return false;
 	}
 
-	m_playerTank = new SpriteSheet;
-	if (!m_playerTank->initialize(L"Resources\\BattleTank\\Tank.PSD", 35, m_gfx))
-	{
-		MessageBox(NULL, L"Не удалось инициализировать танк игрока", L"Ошибка инициализации класс Game", MB_OK);
-		freeAllResources();
-		return false;
-	}
-	m_playerTank->moveTo(500, 200);
-	m_playerTank->rotate(30, D2D1::Point2F(m_playerTank->getWidth() / 2, m_playerTank->getHeight() / 2));
-	m_playerTank->draw();
-
 	return true;
 }
 
@@ -51,11 +40,6 @@ void Game::freeAllResources()
 	{
 		delete m_gfx;
 		m_gfx = nullptr;
-	}
-	if (m_playerTank)
-	{
-		delete m_playerTank;
-		m_playerTank = nullptr;
 	}
 }
 

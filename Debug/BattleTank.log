@@ -1,15 +1,10 @@
-﻿Сборка начата 01.04.2018 19:29:06.
+﻿Сборка начата 01.04.2018 20:00:51.
      1>Проект "D:\MyGames\BattleTank\BattleTank\BattleTank.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp Game.cpp MainApplicationWindow.cpp main.cpp
-         Application.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GraficsComponent.cpp InputComponent.cpp
+         InputComponent.cpp
+         GraficsComponent.cpp
          Создание кода...
-         Компиляция...
-         MainApplicationWindow.cpp
-         Game.cpp
-         Создание кода...
-         Пропуск... (изменения не обнаружены)
-         main.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\MyGames\BattleTank\Debug\BattleTank.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" windowscodecs.lib d2d1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\MyGames\BattleTank\Debug\BattleTank.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\MyGames\BattleTank\Debug\BattleTank.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Bullet.obj
@@ -19,9 +14,12 @@
          Debug\Entity.obj
          Debug\Game.obj
          Debug\Grafics2D.obj
+         Debug\GraficsComponent.obj
+         Debug\InputComponent.obj
          Debug\main.obj
          Debug\MainApplicationWindow.obj
          Debug\PlayerBullet.obj
+         Debug\PlayerTank.obj
          Debug\SpriteSheet.obj
          Debug\StaticEntity.obj
          Debug\WallBlock.obj
@@ -31,4 +29,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:02.28
+Затраченное время: 00:00:01.42

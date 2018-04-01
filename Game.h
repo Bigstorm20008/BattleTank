@@ -6,8 +6,6 @@
 #include "Grafics2D.h"
 #include "SpriteSheet.h"
 #include "Entity.h"
-#include "EnemyTank.h"
-#include "WallBlock.h"
 
 class Game
 {
@@ -23,9 +21,7 @@ protected:
 	Grafics2D* m_gfx;
 
 	std::vector<Entity*> m_entityesOnPlayfield;
-	WallBlock block;
-	EnemyTank enemyTank;
-	SpriteSheet* m_playerTank;
+
 	void freeAllResources();
 };
 
