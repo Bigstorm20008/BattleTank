@@ -17,6 +17,7 @@ public:
 
 	float getWidth() const;
 	float getHeight() const;
+
 protected:
 	float m_frameWidth;
 	Grafics2D* m_pGfx;

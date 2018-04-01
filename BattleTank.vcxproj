@@ -81,19 +81,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="DynamicEntity.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="EnemyTank.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grafics2D.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainApplicationWindow.cpp" />
+    <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="StaticEntity.cpp" />
+    <ClCompile Include="WallBlock.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="DynamicEntity.h" />
+    <ClInclude Include="EnemyBullet.h" />
+    <ClInclude Include="EnemyTank.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grafics2D.h" />
     <ClInclude Include="MainApplicationWindow.h" />
+    <ClInclude Include="PlayerBullet.h" />
     <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="StaticEntity.h" />
+    <ClInclude Include="WallBlock.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
