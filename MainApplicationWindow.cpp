@@ -24,14 +24,6 @@ MainApplicationWindow::~MainApplicationWindow()
 
 LRESULT MainApplicationWindow::RealWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	switch (msg)
-	{
 	
-		case WM_DESTROY:
-		{		
-			PostQuitMessage(0);
-			break;
-		}
-	}
-	return DefWindowProc(hWnd, msg, wParam, lParam);
+	return m_game->messageHandler(hWnd, msg, wParam, lParam);
 }

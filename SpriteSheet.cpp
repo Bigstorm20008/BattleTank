@@ -3,12 +3,22 @@
 
 SpriteSheet::SpriteSheet()
 {
-	
+	m_pWicFactory = nullptr;
+	m_pWicDecoder = nullptr;
+	m_pWicFrameDecode = nullptr;
+	m_pWicConverter = nullptr;
+	m_pBitmap = nullptr;
+	m_pGfx = nullptr;
 }
 
 
 SpriteSheet::~SpriteSheet()
 {
+	if (m_pBitmap)
+	{
+		m_pBitmap->Release();
+		m_pBitmap = nullptr;
+	}
 }
 
 
@@ -42,10 +52,10 @@ bool SpriteSheet::initialize(wchar_t* fileLocation, float frameWidth, Grafics2D*
 	}
 
 	hResult = m_pWicFactory->CreateDecoderFromFilename(fileLocation,
-			                                        NULL,
-			                                        GENERIC_READ,
-			                                        WICDecodeMetadataCacheOnLoad,
-	   	                                            &m_pWicDecoder);
+			                                           NULL,
+			                                           GENERIC_READ,
+			                                           WICDecodeMetadataCacheOnLoad,
+	   	                                               &m_pWicDecoder);
 	if (hResult != S_OK)
 	{
 		MessageBox(NULL, L"Не удалось создать WicDecoder", L"Ошибка инициализации класс SpriteSheet", MB_OK);
@@ -139,4 +149,40 @@ void SpriteSheet::releaseWicResources()
 		m_pWicFrameDecode->Release();
 		m_pWicFrameDecode = NULL;
 	}
+}
+
+
+void SpriteSheet::draw()
+{
+	m_pGfx->beginDraw();
+	m_pGfx->clearScreen(1.f, 1.f, 1.f);
+	m_pGfx->getRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_pGfx->getRenderTarget()->SetTransform(m_rotationMatrix * m_translationMatrix);
+	m_pGfx->getRenderTarget()->DrawBitmap(m_pBitmap,
+		                                  m_positionInWindow,
+		                                  1.f,
+		                                  D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
+		                                  m_positionInSpriteSheet);
+	m_pGfx->endDraw();
+}
+
+void SpriteSheet::moveTo(float xPos, float yPos)
+{
+	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(xPos, yPos));
+}
+
+void SpriteSheet::rotate(float angle, D2D1_POINT_2F rotationAround)
+{
+	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(angle, rotationAround);
+}
+
+
+float SpriteSheet::getWidth() const
+{
+	return m_pBitmap->GetSize().width;
+}
+
+float SpriteSheet::getHeight() const
+{
+	return m_pBitmap->GetSize().height;
 }

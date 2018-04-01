@@ -11,6 +11,12 @@ public:
 	virtual ~SpriteSheet();
 
 	bool initialize(wchar_t* fileLocation, float frameWidth, Grafics2D* gfx);
+	void draw();
+	void moveTo(float xPos, float yPos);
+	void rotate(float angle, D2D1_POINT_2F rotationAround);
+
+	float getWidth() const;
+	float getHeight() const;
 protected:
 	float m_frameWidth;
 	Grafics2D* m_pGfx;
