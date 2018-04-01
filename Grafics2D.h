@@ -12,6 +12,8 @@ public:
 	void beginDraw();
 	void endDraw();
 	void clearScreen(float red, float green, float blue);
+
+	ID2D1HwndRenderTarget* getRenderTarget() const;
 private:
 	ID2D1Factory* m_pFactory;
 	ID2D1HwndRenderTarget* m_pRenderTarget;

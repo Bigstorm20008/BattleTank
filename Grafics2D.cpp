@@ -82,3 +82,9 @@ void Grafics2D::clearScreen(float red, float green, float blue)
 {
 	m_pRenderTarget->Clear(D2D1::ColorF(red, green, blue));
 }
+
+
+ID2D1HwndRenderTarget* Grafics2D::getRenderTarget() const
+{
+	return m_pRenderTarget;
+}
