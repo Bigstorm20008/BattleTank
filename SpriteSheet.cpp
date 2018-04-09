@@ -37,6 +37,12 @@ bool SpriteSheet::initialize(wchar_t* fileLocation, float frameWidth, Grafics2D*
 	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(0, D2D1::Point2F(0.f, 0.f));
 	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(0.f, 0.f));
 
+	m_transformationMatrix = D2D1::Matrix3x2F::Identity();
+	
+	
+	
+	
+
 	HRESULT hResult;
 
 	hResult = CoCreateInstance(CLSID_WICImagingFactory,
@@ -154,16 +160,14 @@ void SpriteSheet::releaseWicResources()
 
 void SpriteSheet::draw()
 {
-	m_pGfx->beginDraw();
-	m_pGfx->clearScreen(1.f, 1.f, 1.f);
 	m_pGfx->getRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-	m_pGfx->getRenderTarget()->SetTransform(m_rotationMatrix * m_translationMatrix);
+	//m_pGfx->getRenderTarget()->SetTransform(m_rotationMatrix * m_translationMatrix);
+	m_pGfx->getRenderTarget()->SetTransform(m_transformationMatrix);
 	m_pGfx->getRenderTarget()->DrawBitmap(m_pBitmap,
 		                                  m_positionInWindow,
 		                                  1.f,
 		                                  D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
 		                                  m_positionInSpriteSheet);
-	m_pGfx->endDraw();
 }
 
 void SpriteSheet::moveTo(float xPos, float yPos)
@@ -186,3 +190,9 @@ float SpriteSheet::getHeight() const
 {
 	return m_pBitmap->GetSize().height;
 }
+
+void SpriteSheet::setTransformation(D2D1::Matrix3x2F& transformMatrix)
+{
+	m_transformationMatrix = transformMatrix;
+}
+

@@ -1,15 +1,17 @@
 #pragma once
 
 #include "Grafics2D.h"
-#include "SpriteSheet.h"
-#include "PlayerTank.h"
-
+class GameObject;
+#include "GameObject.h"
 
 class GraficsComponent
 {
 public:
-	GraficsComponent();
+	GraficsComponent(Grafics2D& gfx);
 	virtual ~GraficsComponent();
-	void update(PlayerTank& playerTank, Grafics2D& gfx);
+	virtual void update(GameObject* gameobject) = 0;
+
+protected:
+	Grafics2D* m_pGfx;
 };
 

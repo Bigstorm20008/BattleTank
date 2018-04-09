@@ -1,19 +1,24 @@
 #pragma once
 
-//forward declaration
-class InputComponent;
-class GraficsComponent;
+class PlayerTankInputComponent;
+class TankGraficsComponent;
 
-#include "InputComponent.h"
-#include "GraficsComponent.h"
+#include "GameObject.h"
+#include "TankGraficsComponent.h"
+#include "PlayerTankInputComponent.h"
 
-class PlayerTank
+class PlayerTank :
+	public GameObject
 {
 public:
-	PlayerTank();
+	PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent);
 	virtual ~PlayerTank();
+
+	void update() override;
+	float& getCurrentBodyAngle();
 private:
-	InputComponent* m_inputComponent;
-	GraficsComponent* m_graficsComponent;
+	PlayerTankInputComponent* m_input;
+	float m_bodyRotationAngle;
+	float m_bodyAngle;
 };
 

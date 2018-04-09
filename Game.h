@@ -5,7 +5,7 @@
 
 #include "Grafics2D.h"
 #include "SpriteSheet.h"
-#include "Entity.h"
+#include "PlayerTank.h"
 
 class Game
 {
@@ -14,13 +14,16 @@ public:
 	virtual ~Game();
 
 	bool initalize(HWND gameWindow);
+	void update();
+	void render();
 
-	LRESULT messageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 protected:
 	HWND m_gameWindow;
 	Grafics2D* m_gfx;
 
-	std::vector<Entity*> m_entityesOnPlayfield;
+
+	PlayerTank* m_pPlayerTank;
+	void intGameObjects();
 
 	void freeAllResources();
 };

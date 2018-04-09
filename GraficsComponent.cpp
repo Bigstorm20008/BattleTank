@@ -1,17 +1,12 @@
 #include "GraficsComponent.h"
 
 
-GraficsComponent::GraficsComponent()
+GraficsComponent::GraficsComponent(Grafics2D& gfx)
 {
+	m_pGfx = &gfx;
 }
 
 
 GraficsComponent::~GraficsComponent()
 {
-}
-
-
-void GraficsComponent::update(PlayerTank& playerTank, Grafics2D& gfx)
-{
-
 }

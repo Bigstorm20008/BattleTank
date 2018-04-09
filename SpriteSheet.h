@@ -1,7 +1,8 @@
 #pragma once
 
 #include <wincodec.h>
-
+#include "DirectXMath.h"
+#include "D2d1_1helper.h"
 #include "Grafics2D.h"
 
 class SpriteSheet
@@ -17,12 +18,12 @@ public:
 
 	float getWidth() const;
 	float getHeight() const;
-
+	void setTransformation(D2D1::Matrix3x2F& transformMatrix);
 protected:
 	float m_frameWidth;
 	Grafics2D* m_pGfx;
 	ID2D1Bitmap* m_pBitmap;
-
+	D2D1::Matrix3x2F m_transformationMatrix;
 	D2D1_RECT_F m_positionInWindow;
 	D2D1_RECT_F m_positionInSpriteSheet;
 	D2D1::Matrix3x2F m_rotationMatrix;

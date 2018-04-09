@@ -6,13 +6,7 @@ MainApplicationWindow::MainApplicationWindow(TCHAR* szClassName, TCHAR* szWindow
 {
 
 	createWindow(NULL, WS_OVERLAPPEDWINDOW | WS_VISIBLE, 100, 30, 1280, 1024);
-	m_game = new Game;
-
-	if (!m_game->initalize(this->getHandle()))
-	{
-		delete m_game;
-		m_game = nullptr;
-	}
+	
 }
 
 
@@ -24,6 +18,16 @@ MainApplicationWindow::~MainApplicationWindow()
 
 LRESULT MainApplicationWindow::RealWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	
-	return m_game->messageHandler(hWnd, msg, wParam, lParam);
+	switch (msg)
+	{
+		case WM_DESTROY:
+		{
+			PostQuitMessage(0);
+			break;
+		}
+		default:
+			break;
+	}
+
+	return DefWindowProc(hWnd, msg, wParam, lParam);
 }

@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Заголовочные файлы\Components">
+      <UniqueIdentifier>{e245be65-430a-434c-b817-33788f5a5c3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Components\AbstractComponents">
+      <UniqueIdentifier>{bd88bc6a-26ef-42a0-9a8c-98a90a8e8cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Components\PlayerTankComponents">
+      <UniqueIdentifier>{f69a95c2-56b1-4752-81bc-7ff42d3c9f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GameObjects">
+      <UniqueIdentifier>{ff4d61ae-e6be-47ab-8bca-d79d8a40e760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,37 +48,28 @@
     <ClCompile Include="SpriteSheet.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticEntity.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicEntity.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyTank.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerBullet.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBullet.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="WallBlock.cpp">
+    <ClCompile Include="GameObject.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="InputComponent.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerTank.cpp">
+    <ClCompile Include="World.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="GraficsComponent.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTank.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="TankGraficsComponent.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTankInputComponent.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,38 +92,29 @@
     <ClInclude Include="SpriteSheet.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticEntity.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicEntity.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyTank.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerBullet.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBullet.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="WallBlock.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="InputComponent.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerTank.h">
+    <ClInclude Include="World.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="GraficsComponent.h">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>Заголовочные файлы\Components\AbstractComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Заголовочные файлы\Components\AbstractComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>Заголовочные файлы\Components\AbstractComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTankInputComponent.h">
+      <Filter>Заголовочные файлы\Components\PlayerTankComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="TankGraficsComponent.h">
+      <Filter>Заголовочные файлы\Components\PlayerTankComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Заголовочные файлы\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTank.h">
+      <Filter>Заголовочные файлы\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 Game::Game()
 {
 	m_gfx = nullptr;
+	m_pPlayerTank = nullptr;
 }
 
 
@@ -30,6 +31,7 @@ bool Game::initalize(HWND gameWindow)
 		return false;
 	}
 
+	intGameObjects();
 	return true;
 }
 
@@ -41,19 +43,36 @@ void Game::freeAllResources()
 		delete m_gfx;
 		m_gfx = nullptr;
 	}
-}
-
-
-LRESULT Game::messageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-	switch (msg)
+	if (m_pPlayerTank)
 	{
-		case WM_DESTROY:
-		{
-			PostQuitMessage(0);
-			break;
-		}
+		delete m_pPlayerTank;
+		m_pPlayerTank = nullptr;
 	}
-
-	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
+
+
+void Game::intGameObjects()
+{
+	PlayerTankInputComponent* playerInput = new PlayerTankInputComponent;
+	TankGraficsComponent* tankGrafics = new TankGraficsComponent(*m_gfx);
+	wchar_t* tankBodyLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\Tank.PSD";
+	wchar_t* tankTowerLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\stone_texture942.JPG";
+	tankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation,35);
+	m_pPlayerTank = new PlayerTank(tankGrafics, playerInput);
+}
+
+
+void Game::update()
+{
+
+}
+void Game::render()
+{
+	m_gfx->beginDraw();
+	m_gfx->clearScreen(1.f, 1.f, 1.f);
+
+	m_pPlayerTank->update();
+
+	m_gfx->endDraw();
+}
+

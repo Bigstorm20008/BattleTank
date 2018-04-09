@@ -4,6 +4,8 @@
 Application::Application()
 {
 	m_mainView = new MainApplicationWindow(L"MainApplicationWindow", L"Battle Tank");
+	m_pGame = new Game;
+	m_pGame->initalize(m_mainView->getHandle());
 }
 
 
@@ -15,7 +17,11 @@ Application::~Application()
 		delete m_mainView;
 		m_mainView = nullptr;
 	}
-	
+	if (m_pGame)
+	{
+		delete m_pGame;
+		m_pGame = nullptr;
+	}
 }
 
 int Application::run()
@@ -31,7 +37,8 @@ int Application::run()
 		}
 		else
 		{
-		
+			m_pGame->update();
+			m_pGame->render();
 		}
 	}
 	return static_cast<int>(msg.wParam);

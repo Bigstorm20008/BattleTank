@@ -1,14 +1,14 @@
 #pragma once
 
-//forward declaration
-class PlayerTank;
-#include  "PlayerTank.h"
+class GameObject;
+#include "GameObject.h"
+
 
 class InputComponent
 {
 public:
 	InputComponent();
 	virtual ~InputComponent();
-	void update(PlayerTank& playerTank);
+	virtual void update(GameObject* gameObject) = 0;
 };
 
