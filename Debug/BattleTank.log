@@ -1,9 +1,9 @@
-﻿Сборка начата 11.04.2018 9:23:48.
+﻿Сборка начата 11.04.2018 9:42:43.
      1>Проект "D:\MyGames\BattleTank\BattleTank\BattleTank.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt PlayerTankInputComponent.cpp
-         PlayerTankInputComponent.cpp
-     1>d:\mygames\battletank\battletank\playertankinputcomponent.cpp(68): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Game.cpp
+         Game.cpp
+     1>d:\mygames\battletank\battletank\game.cpp(61): warning C4316: "PlayerTank": объект, размещенный в куче, может не быть выровнен 16
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\MyGames\BattleTank\Debug\BattleTank.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" Dwrite.lib windowscodecs.lib d2d1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\MyGames\BattleTank\Debug\BattleTank.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\MyGames\BattleTank\Debug\BattleTank.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Game.obj
@@ -27,4 +27,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:06.02
+Затраченное время: 00:00:06.27
