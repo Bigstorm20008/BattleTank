@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "PlayerTank.h"
 #include "GraficsComponent.h"
 #include "SpriteSheet.h"

@@ -37,6 +37,27 @@ bool Grafics2D::init(HWND windowForDirect2D)
 		return false;
 	}
 
+	DWriteCreateFactory(
+		DWRITE_FACTORY_TYPE_SHARED,
+		__uuidof(m_pDWriteFactory),
+		reinterpret_cast<IUnknown **>(&m_pDWriteFactory));
+
+	m_pDWriteFactory->CreateTextFormat(
+		L"Verdana",
+		NULL,
+		DWRITE_FONT_WEIGHT_NORMAL,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		50,
+		L"", //locale
+		&m_pTextFormat
+		);
+
+	m_pTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+
+	m_pTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+
+
 	result = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(0.f, 0.f, 0.f), &m_pSolidColorBrush);
 	if (result != S_OK)
 	{
@@ -87,4 +108,18 @@ void Grafics2D::clearScreen(float red, float green, float blue)
 ID2D1HwndRenderTarget* Grafics2D::getRenderTarget() const
 {
 	return m_pRenderTarget;
+}
+
+
+void Grafics2D::drawText(const WCHAR* text)
+{
+	m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_pRenderTarget->DrawText(
+		text,
+		_tcslen(text),
+		m_pTextFormat,
+		D2D1::RectF(0, 0, 500, 40),
+		m_pSolidColorBrush
+		);
+
 }

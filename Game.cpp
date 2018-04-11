@@ -55,8 +55,8 @@ void Game::intGameObjects()
 {
 	PlayerTankInputComponent* playerInput = new PlayerTankInputComponent;
 	TankGraficsComponent* tankGrafics = new TankGraficsComponent(*m_gfx);
-	wchar_t* tankBodyLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\Tank.PSD";
-	wchar_t* tankTowerLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\stone_texture942.JPG";
+	wchar_t* tankBodyLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\Tank1.PSD";
+	wchar_t* tankTowerLocation = L"D:\\MyGames\\BattleTank\\BattleTank\\Resources\\BattleTank\\TankTower.PSD";
 	tankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation,35);
 	m_pPlayerTank = new PlayerTank(tankGrafics, playerInput);
 }

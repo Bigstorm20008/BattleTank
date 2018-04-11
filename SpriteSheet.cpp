@@ -34,9 +34,6 @@ bool SpriteSheet::initialize(wchar_t* fileLocation, float frameWidth, Grafics2D*
 
 	m_frameWidth = frameWidth;
 	
-	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(0, D2D1::Point2F(0.f, 0.f));
-	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(0.f, 0.f));
-
 	m_transformationMatrix = D2D1::Matrix3x2F::Identity();
 	
 	
@@ -161,7 +158,6 @@ void SpriteSheet::releaseWicResources()
 void SpriteSheet::draw()
 {
 	m_pGfx->getRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-	//m_pGfx->getRenderTarget()->SetTransform(m_rotationMatrix * m_translationMatrix);
 	m_pGfx->getRenderTarget()->SetTransform(m_transformationMatrix);
 	m_pGfx->getRenderTarget()->DrawBitmap(m_pBitmap,
 		                                  m_positionInWindow,
@@ -170,16 +166,15 @@ void SpriteSheet::draw()
 		                                  m_positionInSpriteSheet);
 }
 
-void SpriteSheet::moveTo(float xPos, float yPos)
+void SpriteSheet::drawVector(DirectX::XMVECTOR v,int lenght)
 {
-	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(xPos, yPos));
-}
+	ID2D1SolidColorBrush* brush = NULL;
+	m_pGfx->getRenderTarget()->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::Aquamarine, 1.0f), &brush);
+	m_pGfx->getRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_pGfx->getRenderTarget()->DrawLine(D2D1::Point2F(0.f, 0.f), D2D1::Point2F(DirectX::XMVectorGetX(v)*lenght, DirectX::XMVectorGetY(v)*lenght), brush);
 
-void SpriteSheet::rotate(float angle, D2D1_POINT_2F rotationAround)
-{
-	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(angle, rotationAround);
+	brush->Release();
 }
-
 
 float SpriteSheet::getWidth() const
 {
@@ -194,5 +189,10 @@ float SpriteSheet::getHeight() const
 void SpriteSheet::setTransformation(D2D1::Matrix3x2F& transformMatrix)
 {
 	m_transformationMatrix = transformMatrix;
+}
+
+void SpriteSheet::drawText(WCHAR* text, int size)
+{
+
 }
 

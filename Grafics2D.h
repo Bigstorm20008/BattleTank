@@ -1,6 +1,8 @@
 #pragma once
 
 #include <d2d1.h>
+#include "Dwrite.h"
+#include <tchar.h>
 
 class Grafics2D
 {
@@ -14,10 +16,13 @@ public:
 	void clearScreen(float red, float green, float blue);
 
 	ID2D1HwndRenderTarget* getRenderTarget() const;
+	void drawText(const WCHAR* text);
 private:
 	ID2D1Factory* m_pFactory;
 	ID2D1HwndRenderTarget* m_pRenderTarget;
 	ID2D1SolidColorBrush* m_pSolidColorBrush;
+	IDWriteFactory* m_pDWriteFactory;
+	IDWriteTextFormat* m_pTextFormat;
 
 	void releaseAll();
 };

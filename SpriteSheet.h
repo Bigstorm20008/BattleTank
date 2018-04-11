@@ -13,12 +13,12 @@ public:
 
 	bool initialize(wchar_t* fileLocation, float frameWidth, Grafics2D* gfx);
 	void draw();
-	void moveTo(float xPos, float yPos);
-	void rotate(float angle, D2D1_POINT_2F rotationAround);
-
+	
 	float getWidth() const;
 	float getHeight() const;
 	void setTransformation(D2D1::Matrix3x2F& transformMatrix);
+	void drawVector(DirectX::XMVECTOR v, int lenght = 1);
+	void drawText(WCHAR* text, int size);
 protected:
 	float m_frameWidth;
 	Grafics2D* m_pGfx;
@@ -26,9 +26,7 @@ protected:
 	D2D1::Matrix3x2F m_transformationMatrix;
 	D2D1_RECT_F m_positionInWindow;
 	D2D1_RECT_F m_positionInSpriteSheet;
-	D2D1::Matrix3x2F m_rotationMatrix;
-	D2D1::Matrix3x2F m_translationMatrix;
-
+	
 private:
 	IWICImagingFactory* m_pWicFactory;
 	IWICBitmapDecoder* m_pWicDecoder;

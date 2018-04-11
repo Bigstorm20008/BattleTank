@@ -16,9 +16,16 @@ public:
 
 	void update() override;
 	float& getCurrentBodyAngle();
+	float& getCurrentTowerAngle();
+	DirectX::XMVECTOR& getCannonDirection();
+
 private:
 	PlayerTankInputComponent* m_input;
 	float m_bodyRotationAngle;
 	float m_bodyAngle;
+
+	float m_towerRotationAngle;
+	float m_towerAngle;
+	DirectX::XMVECTOR m_cannonDirecton;
 };
 
