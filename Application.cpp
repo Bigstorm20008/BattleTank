@@ -32,6 +32,10 @@ int Application::run()
 	{   
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
+			if (msg.message == WM_LBUTTONDOWN)
+			{
+				m_pGame->explosion();
+			}
 			DispatchMessage(&msg);
 			TranslateMessage(&msg);
 		}

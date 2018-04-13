@@ -13,12 +13,14 @@ public:
 
 	bool initialize(wchar_t* fileLocation, float frameWidth, Grafics2D* gfx);
 	void draw();
+	void animate();
 	
 	float getWidth() const;
 	float getHeight() const;
 	void setTransformation(D2D1::Matrix3x2F& transformMatrix);
 	void drawVector(DirectX::XMVECTOR v, int lenght = 1);
 	void drawText(WCHAR* text, int size);
+	int currentFrame;
 protected:
 	float m_frameWidth;
 	Grafics2D* m_pGfx;

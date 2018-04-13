@@ -82,24 +82,11 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 	{
 		return;
 	}
+
+	DirectX::XMVECTOR crossProduct = DirectX::XMVector2Cross(cannonDirection, directionToMousePositionNorm);
 	if (angleInDigrees < 180)
 	{
-		if ((DirectX::XMVectorGetY(cannonDirection) * DirectX::XMVectorGetX(directionToMousePositionNorm) - DirectX::XMVectorGetX(cannonDirection) *DirectX::XMVectorGetY(directionToMousePositionNorm)) < 0)
-		{
-			if (angleInDigrees > 0.25f)
-			{
-				DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(0.25f * DirectX::XM_PI / 180);
-				cannonDirection = DirectX::XMVector2Transform(cannonDirection, rotationAroundZ);
-				tankTowerAngle += 0.25;
-			}
-			else
-			{
-				DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(angleInDigrees * DirectX::XM_PI / 180);
-				cannonDirection = DirectX::XMVector2Transform(cannonDirection, rotationAroundZ);
-				tankTowerAngle += angleInDigrees;
-			}
-		}
-		if ((DirectX::XMVectorGetY(cannonDirection) * DirectX::XMVectorGetX(directionToMousePositionNorm) - DirectX::XMVectorGetX(cannonDirection) *DirectX::XMVectorGetY(directionToMousePositionNorm)) > 0)
+		if (DirectX::XMVectorGetX(crossProduct) < 0)
 		{
 			if (angleInDigrees > 0.25f)
 			{
@@ -112,6 +99,21 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 				DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(-angleInDigrees * DirectX::XM_PI / 180);
 				cannonDirection = DirectX::XMVector2Transform(cannonDirection, rotationAroundZ);
 				tankTowerAngle -= angleInDigrees;
+			}
+		}
+		if (DirectX::XMVectorGetX(crossProduct) > 0)
+		{
+			if (angleInDigrees > 0.25f)
+			{
+				DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(0.25f * DirectX::XM_PI / 180);
+				cannonDirection = DirectX::XMVector2Transform(cannonDirection, rotationAroundZ);
+				tankTowerAngle += 0.25;
+			}
+			else
+			{
+				DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(angleInDigrees * DirectX::XM_PI / 180);
+				cannonDirection = DirectX::XMVector2Transform(cannonDirection, rotationAroundZ);
+				tankTowerAngle += angleInDigrees;
 			}
 		}
 

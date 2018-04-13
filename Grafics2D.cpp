@@ -48,7 +48,7 @@ bool Grafics2D::init(HWND windowForDirect2D)
 		DWRITE_FONT_WEIGHT_NORMAL,
 		DWRITE_FONT_STYLE_NORMAL,
 		DWRITE_FONT_STRETCH_NORMAL,
-		50,
+		20,
 		L"", //locale
 		&m_pTextFormat
 		);

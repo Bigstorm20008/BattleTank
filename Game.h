@@ -16,6 +16,7 @@ public:
 	bool initalize(HWND gameWindow);
 	void update();
 	void render();
+	void explosion();
 
 protected:
 	HWND m_gameWindow;
@@ -23,6 +24,7 @@ protected:
 
 
 	PlayerTank* m_pPlayerTank;
+	SpriteSheet* m_explosion;
 	void intGameObjects();
 
 	void freeAllResources();

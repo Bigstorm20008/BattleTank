@@ -9,6 +9,8 @@ SpriteSheet::SpriteSheet()
 	m_pWicConverter = nullptr;
 	m_pBitmap = nullptr;
 	m_pGfx = nullptr;
+
+	currentFrame = 1;
 }
 
 
@@ -195,4 +197,15 @@ void SpriteSheet::drawText(WCHAR* text, int size)
 {
 
 }
+
+void SpriteSheet::animate()
+{
+	if (currentFrame < 85)
+	{
+		m_positionInSpriteSheet.left += m_frameWidth;
+		m_positionInSpriteSheet.right += m_frameWidth;
+		++currentFrame;
+	}
+}
+
 
