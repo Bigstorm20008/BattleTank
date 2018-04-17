@@ -65,7 +65,7 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 	HWND gameWindow = FindWindow(L"MainApplicationWindow", L"Battle Tank");
 	ScreenToClient(gameWindow, &mousePosition);
 
-	DirectX::XMVECTOR vectorMousePosition = DirectX::XMVectorSet(mousePosition.x, mousePosition.y, 0.f, 0.f);
+	DirectX::XMVECTOR vectorMousePosition = DirectX::XMVectorSet(static_cast<FLOAT>(mousePosition.x), static_cast<FLOAT>(mousePosition.y), 0.f, 0.f);
 	DirectX::XMVECTOR position = gameObject->getPosition();
 
 	DirectX::XMVECTOR directionToMousePosition = DirectX::XMVectorSubtract(vectorMousePosition, position);

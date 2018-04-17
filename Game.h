@@ -2,7 +2,6 @@
 
 #include <vector>
 
-
 #include "Grafics2D.h"
 #include "SpriteSheet.h"
 #include "PlayerTank.h"
@@ -22,10 +21,19 @@ protected:
 	HWND m_gameWindow;
 	Grafics2D* m_gfx;
 
-
+	SpriteSheet* m_background;
 	PlayerTank* m_pPlayerTank;
 	SpriteSheet* m_explosion;
-	void intGameObjects();
+	
+	//PlayerTank Components
+	PlayerTankInputComponent* m_playerInput;
+	TankGraficsComponent* m_playerTankGrafics;
+
+	void initInputComponents();
+	void initGraficsComponents();
+	void initPhysicsComponents();
+	void initGameWorld();
+	void initGameObjects();
 
 	void freeAllResources();
 };

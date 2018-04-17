@@ -72,6 +72,15 @@
     <ClCompile Include="PlayerTankInputComponent.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="WallBlock.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="WallBlockGraficsComponent.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -114,6 +123,15 @@
       <Filter>Заголовочные файлы\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerTank.h">
+      <Filter>Заголовочные файлы\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="WallBlockGraficsComponent.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="WallBlock.h">
       <Filter>Заголовочные файлы\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

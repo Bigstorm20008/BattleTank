@@ -15,6 +15,8 @@ public:
 	virtual~GameObject();
 
 	virtual void update() = 0;
+	virtual void render() = 0;
+
 	DirectX::XMVECTOR& getAcceleraton();
 	DirectX::XMVECTOR& getPosition();
 protected:

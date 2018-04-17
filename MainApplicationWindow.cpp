@@ -5,7 +5,7 @@ MainApplicationWindow::MainApplicationWindow(TCHAR* szClassName, TCHAR* szWindow
 	: Window(szClassName, szWindowName)
 {
 
-	createWindow(NULL, WS_OVERLAPPEDWINDOW | WS_VISIBLE, 100, 30, 1280, 1024);
+	createWindow(NULL, WS_OVERLAPPEDWINDOW | WS_VISIBLE, 0, 0, 1280, 1024);
 	
 }
 

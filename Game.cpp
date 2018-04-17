@@ -6,7 +6,7 @@ Game::Game()
 	m_gfx = nullptr;
 	m_pPlayerTank = nullptr;
 	m_explosion = nullptr;
-
+	m_background = nullptr;
 }
 
 
@@ -29,11 +29,19 @@ bool Game::initalize(HWND gameWindow)
 	if (!m_gfx->init(m_gameWindow))
 	{
 		MessageBox(NULL, L"Не удалось инициализировать графический ускоритель", L"Ошибка инициализации класс Game", MB_OK);
-		
+		delete m_gfx;
+		m_gfx = nullptr;
 		return false;
 	}
 
-	intGameObjects();
+	initGameWorld();
+
+	initInputComponents();
+	initGraficsComponents();
+	initPhysicsComponents();
+
+	initGameObjects();
+
 	return true;
 }
 
@@ -50,31 +58,72 @@ void Game::freeAllResources()
 		delete m_pPlayerTank;
 		m_pPlayerTank = nullptr;
 	}
+	if (m_background)
+	{
+		delete m_background;
+		m_background = nullptr;
+	}
+	if (m_playerInput)
+	{
+		delete m_playerInput;
+		m_playerInput = nullptr;
+	}
+	if (m_playerTankGrafics)
+	{
+		delete m_playerTankGrafics;
+		m_playerTankGrafics = nullptr;
+	}
+	if (m_explosion)
+	{
+		delete m_explosion;
+		m_explosion = nullptr;
+	}
 }
 
-
-void Game::intGameObjects()
+void Game::initInputComponents()
 {
-	PlayerTankInputComponent* playerInput = new PlayerTankInputComponent;
-	TankGraficsComponent* tankGrafics = new TankGraficsComponent(*m_gfx);
+	m_playerInput = new PlayerTankInputComponent;
+}
+
+void Game::initGraficsComponents()
+{
+	m_playerTankGrafics = new TankGraficsComponent(*m_gfx);
 	wchar_t* tankBodyLocation = L"Resources\\BattleTank\\Tank1.PSD";
 	wchar_t* tankTowerLocation = L"Resources\\BattleTank\\TankTower.PSD";
-	tankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation,35);
-	m_pPlayerTank = new PlayerTank(tankGrafics, playerInput);
+	m_playerTankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation, 35);
+}
 
+void Game::initPhysicsComponents()
+{
+
+}
+
+void Game::initGameWorld()
+{
+
+}
+
+void Game::initGameObjects()
+{
+	wchar_t* backgrondLocation = L"Resources\\Background\\background.PSD";
+	m_background = new SpriteSheet;
+	m_background->initialize(backgrondLocation, m_gfx);
+    m_pPlayerTank = new PlayerTank(m_playerTankGrafics, m_playerInput);
 }
 
 
 void Game::update()
 {
-
+	m_pPlayerTank->update();
 }
+
 void Game::render()
 {
 	m_gfx->beginDraw();
 	m_gfx->clearScreen(1.f, 1.f, 1.f);
+	m_background->draw();
+	m_pPlayerTank->render();
 
-	m_pPlayerTank->update();
 	if (m_explosion)
 	{
 		m_explosion->animate();
@@ -98,7 +147,7 @@ void Game::explosion()
 	GetCursorPos(&mousePosition);
 	HWND gameWindow = FindWindow(L"MainApplicationWindow", L"Battle Tank");
 	ScreenToClient(gameWindow, &mousePosition);
-	D2D1::Matrix3x2F& translateMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(mousePosition.x, mousePosition.y));
+	D2D1::Matrix3x2F& translateMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(static_cast<FLOAT>(mousePosition.x), static_cast<FLOAT>(mousePosition.y)));
 	m_explosion->setTransformation(translateMatrix);
 }
 

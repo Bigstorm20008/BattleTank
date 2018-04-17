@@ -1,5 +1,7 @@
 #pragma once
 
+#include  <chrono>
+
 #include "MainApplicationWindow.h"
 #include "Game.h"
 

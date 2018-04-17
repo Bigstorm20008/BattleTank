@@ -12,6 +12,7 @@ public:
 	virtual ~SpriteSheet();
 
 	bool initialize(wchar_t* fileLocation, float frameWidth, Grafics2D* gfx);
+	bool initialize(wchar_t* fileLocation, Grafics2D* gfx);
 	void draw();
 	void animate();
 	

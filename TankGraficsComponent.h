@@ -14,6 +14,7 @@ public:
 	virtual ~TankGraficsComponent();
 	void initComponent(wchar_t& tankBodyFileLocation, wchar_t& tankTowerFileLocation, float spriteFrameWidth);
 	void update(GameObject* gameObject)override;
+	void render() override;
 private:
 	SpriteSheet* m_pTankBody;
 	SpriteSheet* m_pTankTower;

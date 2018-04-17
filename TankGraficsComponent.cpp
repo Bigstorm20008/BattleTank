@@ -32,6 +32,11 @@ void TankGraficsComponent::initComponent(wchar_t& tankBodyFileLocation, wchar_t&
 	m_pTankTower->setTransformation(translationMatrix);
 }
 
+void TankGraficsComponent::render()
+{
+	m_pTankBody->draw();
+	m_pTankTower->draw();
+}
 
 void TankGraficsComponent::update(GameObject* gameObject)
 {
@@ -50,21 +55,4 @@ void TankGraficsComponent::update(GameObject* gameObject)
 	D2D1::Matrix3x2F towerRotationMatrix = D2D1::Matrix3x2F::Rotation(tankTowerAngle, D2D1::Point2F(m_pTankTower->getWidth() / 2, m_pTankTower->getHeight() / 2));
 	D2D1::Matrix3x2F towerTranslationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(transSize.x, transSize.y + 15));
 	m_pTankTower->setTransformation(towerRotationMatrix * towerTranslationMatrix);
-
-	m_pTankBody->draw();
-	m_pTankTower->draw();
-
-
-	POINT mousePosition;
-	GetCursorPos(&mousePosition);
-	HWND gameWindow = FindWindow(L"MainApplicationWindow", L"Battle Tank");
-	ScreenToClient(gameWindow, &mousePosition);
-
-	DirectX::XMVECTOR vectorMousePosition = DirectX::XMVectorSet(mousePosition.x, mousePosition.y, 0.f, 0.f);
-
-	std::wstring x = std::to_wstring(mousePosition.x);
-	std::wstring y = std::to_wstring(mousePosition.y);
-
-	std::wstring coord = L"X: " + x + L" Y: " + y;
-	m_pGfx->drawText(coord.c_str());
 }

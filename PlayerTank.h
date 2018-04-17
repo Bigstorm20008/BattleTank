@@ -15,6 +15,8 @@ public:
 	virtual ~PlayerTank();
 
 	void update() override;
+	void render() override;
+
 	float& getCurrentBodyAngle();
 	float& getCurrentTowerAngle();
 	DirectX::XMVECTOR& getCannonDirection();

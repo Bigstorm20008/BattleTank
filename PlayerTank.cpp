@@ -7,7 +7,7 @@ PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputCompone
 	m_graficsComponent = tankGrafics;
 	m_Acceleration = m_Speed = DirectX::XMVectorSet(0.f, 1.f, 0.f, 0.f);
 	m_cannonDirecton = DirectX::XMVectorSet(0.f, -1.f, 0.f, 0.f);
-	m_Position = DirectX::XMVectorSet(1.f, 1.f, 0.f, 0.f);
+	m_Position = DirectX::XMVectorSet(0.f, 0.f, 0.f, 0.f);
 	m_bodyRotationAngle = 3;
 	m_bodyAngle = 0;
 
@@ -24,6 +24,11 @@ void PlayerTank::update()
 {
 	m_input->update(this);
 	m_graficsComponent->update(this);
+}
+
+void PlayerTank::render()
+{
+	m_graficsComponent->render();
 }
 
 float& PlayerTank::getCurrentBodyAngle()
