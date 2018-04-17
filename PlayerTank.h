@@ -6,12 +6,13 @@ class TankGraficsComponent;
 #include "GameObject.h"
 #include "TankGraficsComponent.h"
 #include "PlayerTankInputComponent.h"
+#include "TargetPointer.h"
 
 class PlayerTank :
 	public GameObject
 {
 public:
-	PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent);
+	PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer);
 	virtual ~PlayerTank();
 
 	void update() override;
@@ -21,8 +22,11 @@ public:
 	float& getCurrentTowerAngle();
 	DirectX::XMVECTOR& getCannonDirection();
 
+	void setTankPosition(int xPos, int yPos);
+
 private:
 	PlayerTankInputComponent* m_input;
+	TargetPointer* m_targetPointer;
 	float m_bodyRotationAngle;
 	float m_bodyAngle;
 

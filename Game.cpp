@@ -78,6 +78,11 @@ void Game::freeAllResources()
 		delete m_explosion;
 		m_explosion = nullptr;
 	}
+	if (m_targetPonter)
+	{
+		delete m_targetPonter;
+		m_targetPonter = nullptr;
+	}
 }
 
 void Game::initInputComponents()
@@ -91,6 +96,7 @@ void Game::initGraficsComponents()
 	wchar_t* tankBodyLocation = L"Resources\\BattleTank\\Tank1.PSD";
 	wchar_t* tankTowerLocation = L"Resources\\BattleTank\\TankTower.PSD";
 	m_playerTankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation, 35);
+	m_targetPonter = new TargetPointer(*m_gfx);
 }
 
 void Game::initPhysicsComponents()
@@ -108,7 +114,12 @@ void Game::initGameObjects()
 	wchar_t* backgrondLocation = L"Resources\\Background\\background.PSD";
 	m_background = new SpriteSheet;
 	m_background->initialize(backgrondLocation, m_gfx);
-    m_pPlayerTank = new PlayerTank(m_playerTankGrafics, m_playerInput);
+
+	RECT rc;
+	GetClientRect(m_gameWindow, &rc);
+	m_pPlayerTank = new PlayerTank(m_playerTankGrafics, m_playerInput, m_targetPonter);
+	m_pPlayerTank->setTankPosition((rc.right - rc.left) / 2, rc.bottom);
+
 }
 
 
@@ -147,7 +158,7 @@ void Game::explosion()
 	GetCursorPos(&mousePosition);
 	HWND gameWindow = FindWindow(L"MainApplicationWindow", L"Battle Tank");
 	ScreenToClient(gameWindow, &mousePosition);
-	D2D1::Matrix3x2F& translateMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(static_cast<FLOAT>(mousePosition.x), static_cast<FLOAT>(mousePosition.y)));
+	D2D1::Matrix3x2F& translateMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(static_cast<FLOAT>(mousePosition.x) - 100/2, static_cast<FLOAT>(mousePosition.y) - m_explosion->getHeight()/2));
 	m_explosion->setTransformation(translateMatrix);
 }
 

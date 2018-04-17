@@ -81,6 +81,9 @@
     <ClCompile Include="WallBlockGraficsComponent.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="TargetPointer.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="WallBlock.h">
       <Filter>Заголовочные файлы\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetPointer.h">
+      <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

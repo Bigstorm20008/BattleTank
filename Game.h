@@ -28,6 +28,7 @@ protected:
 	//PlayerTank Components
 	PlayerTankInputComponent* m_playerInput;
 	TankGraficsComponent* m_playerTankGrafics;
+	TargetPointer* m_targetPonter;
 
 	void initInputComponents();
 	void initGraficsComponents();

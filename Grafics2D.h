@@ -16,7 +16,9 @@ public:
 	void clearScreen(float red, float green, float blue);
 
 	ID2D1HwndRenderTarget* getRenderTarget() const;
+
 	void drawText(const WCHAR* text);
+	void drawLine(D2D1_POINT_2F startPoint, D2D1_POINT_2F endPoint);
 private:
 	ID2D1Factory* m_pFactory;
 	ID2D1HwndRenderTarget* m_pRenderTarget;

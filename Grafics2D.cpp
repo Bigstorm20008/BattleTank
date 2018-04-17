@@ -123,3 +123,9 @@ void Grafics2D::drawText(const WCHAR* text)
 		);
 
 }
+
+void Grafics2D::drawLine(D2D1_POINT_2F startPoint, D2D1_POINT_2F endPoint)
+{
+	m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_pRenderTarget->DrawLine(startPoint, endPoint, m_pSolidColorBrush, 1.f);
+}
