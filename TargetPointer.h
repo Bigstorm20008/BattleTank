@@ -20,5 +20,6 @@ private:
 	SpriteSheet* m_pTargetPointer;
 	D2D1_POINT_2F m_gameObjectPosition;
 	D2D1_POINT_2F m_mousePosition;
+	D2D1_POINT_2F m_tankFirePointerPosition;
 };
 

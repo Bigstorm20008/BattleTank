@@ -84,6 +84,9 @@
     <ClCompile Include="TargetPointer.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="TankTrackGC.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -138,6 +141,9 @@
       <Filter>Заголовочные файлы\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="TargetPointer.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="TankTrackGC.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

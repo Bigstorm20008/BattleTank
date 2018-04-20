@@ -1,7 +1,7 @@
 #include "PlayerTank.h"
 
 
-PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer) : GameObject(tankGrafics)
+PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer, TankTrackGC* tankTrack) : GameObject(tankGrafics)
 {
 	m_input = inputComponent;
 	m_graficsComponent = tankGrafics;
@@ -18,6 +18,8 @@ PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputCompone
 	m_bodyAngle = 0;
 
 	m_towerAngle = 0;
+	m_tankTracks.reserve(100);
+	m_tankTracks.push_back(tankTrack);
 }
 
 
@@ -28,6 +30,10 @@ PlayerTank::~PlayerTank()
 
 void PlayerTank::update()
 {
+	for (auto& track : m_tankTracks)
+	{
+		track->update(this);
+	}
 	m_input->update(this);
 	m_graficsComponent->update(this);
 	m_targetPointer->update(this);
@@ -36,6 +42,12 @@ void PlayerTank::update()
 void PlayerTank::render()
 {
 	m_targetPointer->render();
+
+	for (auto& track : m_tankTracks)
+	{
+		track->render();
+	}
+
 	m_graficsComponent->render();
 }
 
@@ -58,3 +70,10 @@ void PlayerTank::setTankPosition(int xPos, int yPos)
 {
 	m_Position = DirectX::XMVectorSet(xPos - static_cast<TankGraficsComponent*>(m_graficsComponent)->getBodyWidth() / 2, yPos - static_cast<TankGraficsComponent*>(m_graficsComponent)->getBodyHeight()/2, 0.f, 0.f);
 }
+
+std::vector<TankTrackGC*>& PlayerTank::getTankTracks()
+{
+	return m_tankTracks;
+}
+
+

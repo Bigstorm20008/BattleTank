@@ -95,8 +95,9 @@ void Game::initGraficsComponents()
 	m_playerTankGrafics = new TankGraficsComponent(*m_gfx);
 	wchar_t* tankBodyLocation = L"Resources\\BattleTank\\Tank1.PSD";
 	wchar_t* tankTowerLocation = L"Resources\\BattleTank\\TankTower.PSD";
-	m_playerTankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation, 35);
+	m_playerTankGrafics->initComponent(*tankBodyLocation, *tankTowerLocation);
 	m_targetPonter = new TargetPointer(*m_gfx);
+	m_tankTrack = new TankTrackGC(*m_gfx);
 }
 
 void Game::initPhysicsComponents()
@@ -117,7 +118,7 @@ void Game::initGameObjects()
 
 	RECT rc;
 	GetClientRect(m_gameWindow, &rc);
-	m_pPlayerTank = new PlayerTank(m_playerTankGrafics, m_playerInput, m_targetPonter);
+	m_pPlayerTank = new PlayerTank(m_playerTankGrafics, m_playerInput, m_targetPonter,m_tankTrack);
 	m_pPlayerTank->setTankPosition((rc.right - rc.left) / 2, rc.bottom);
 
 }

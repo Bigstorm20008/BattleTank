@@ -97,6 +97,7 @@
     <ClCompile Include="TankGraficsComponent.cpp" />
     <ClCompile Include="PlayerTank.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="TankTrackGC.cpp" />
     <ClCompile Include="TargetPointer.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallBlock.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="TankGraficsComponent.h" />
     <ClInclude Include="PlayerTank.h" />
     <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="TankTrackGC.h" />
     <ClInclude Include="TargetPointer.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallBlock.h" />

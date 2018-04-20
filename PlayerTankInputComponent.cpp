@@ -59,6 +59,20 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 		position = DirectX::XMVectorAdd(position, acceleration);
 	}
 
+	auto& tracks = static_cast<PlayerTank*>(gameObject)->getTankTracks();
+	int lastTrack = tracks.size() - 1;
+	DirectX::XMVECTOR& position = gameObject->getPosition();
+	DirectX::XMVECTOR vec =  DirectX::XMVectorSubtract(position, tracks[lastTrack]->getPosition());
+	DirectX::XMVECTOR vecLenght = DirectX::XMVector2Length(vec);
+	if (DirectX::XMVectorGetX(vecLenght) > tracks[lastTrack]->getHeight())
+	{
+		TankTrackGC* track = tracks[lastTrack]->copy();
+		track->setPositon(position);
+		float angle = static_cast<PlayerTank*>(gameObject)->getCurrentBodyAngle();
+		track->setAngle(angle);
+		tracks.push_back(track);
+	}
+
 
 	POINT mousePosition;
 	GetCursorPos(&mousePosition);
@@ -66,7 +80,7 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 	ScreenToClient(gameWindow, &mousePosition);
 
 	DirectX::XMVECTOR vectorMousePosition = DirectX::XMVectorSet(static_cast<FLOAT>(mousePosition.x), static_cast<FLOAT>(mousePosition.y), 0.f, 0.f);
-	DirectX::XMVECTOR position = gameObject->getPosition();
+	//DirectX::XMVECTOR position = gameObject->getPosition();
 
 	DirectX::XMVECTOR directionToMousePosition = DirectX::XMVectorSubtract(vectorMousePosition, position);
 	DirectX::XMVECTOR directionToMousePositionNorm = DirectX::XMVector2Normalize(directionToMousePosition);

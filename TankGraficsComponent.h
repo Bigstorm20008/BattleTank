@@ -12,7 +12,7 @@ class TankGraficsComponent :
 public:
 	TankGraficsComponent(Grafics2D& gfx);
 	virtual ~TankGraficsComponent();
-	void initComponent(wchar_t& tankBodyFileLocation, wchar_t& tankTowerFileLocation, float spriteFrameWidth);
+	void initComponent(wchar_t& tankBodyFileLocation, wchar_t& tankTowerFileLocation);
 	void update(GameObject* gameObject)override;
 	void render() override;
 	int getBodyWidth() const;

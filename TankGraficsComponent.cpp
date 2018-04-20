@@ -21,13 +21,13 @@ TankGraficsComponent::~TankGraficsComponent()
 }
 
 
-void TankGraficsComponent::initComponent(wchar_t& tankBodyFileLocation, wchar_t& tankTowerFileLocation, float spriteFrameWidth)
+void TankGraficsComponent::initComponent(wchar_t& tankBodyFileLocation, wchar_t& tankTowerFileLocation)
 {
 	m_pTankBody = new SpriteSheet;
-	m_pTankBody->initialize(&tankBodyFileLocation, spriteFrameWidth, m_pGfx);
+	m_pTankBody->initialize(&tankBodyFileLocation, m_pGfx);
 
 	m_pTankTower = new SpriteSheet;
-	m_pTankTower->initialize(&tankTowerFileLocation, spriteFrameWidth, m_pGfx);
+	m_pTankTower->initialize(&tankTowerFileLocation, m_pGfx);
 	//D2D1::Matrix3x2F translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(0, 15));
 	//m_pTankTower->setTransformation(translationMatrix);
 }
@@ -53,7 +53,7 @@ void TankGraficsComponent::update(GameObject* gameObject)
 
 	float tankTowerAngle = static_cast<PlayerTank*>(gameObject)->getCurrentTowerAngle();
 	D2D1::Matrix3x2F towerRotationMatrix = D2D1::Matrix3x2F::Rotation(tankTowerAngle, D2D1::Point2F(m_pTankTower->getWidth() / 2, m_pTankTower->getHeight() / 2));
-	D2D1::Matrix3x2F towerTranslationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(transSize.x - m_pTankBody->getWidth() / 2, (transSize.y - m_pTankBody->getHeight() / 2 )+ 15));
+	D2D1::Matrix3x2F towerTranslationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(transSize.x - m_pTankBody->getWidth() / 2, (transSize.y - m_pTankBody->getHeight() / 2) + 11));
 	m_pTankTower->setTransformation(towerRotationMatrix * towerTranslationMatrix);
 }
 
