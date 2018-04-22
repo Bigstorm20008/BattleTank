@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <chrono>
+#include <random>
+#include <ctime>
 
 class PlayerTankInputComponent;
 class TankGraficsComponent;
@@ -42,8 +44,8 @@ private:
 
 
 	std::vector<TankSmoke*> m_tankSmokes;
-	std::chrono::system_clock::time_point m_currentTimePoint;
-	std::chrono::system_clock::time_point m_previousTimePoint;
+	std::chrono::high_resolution_clock::time_point m_currentTimePoint;
+	std::chrono::high_resolution_clock::time_point m_previousTimePoint;
 
 	float m_bodyRotationAngle;
 	float m_bodyAngle;

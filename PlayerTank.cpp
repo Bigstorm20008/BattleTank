@@ -99,23 +99,27 @@ std::vector<TankSmoke*>& PlayerTank::getTankSmokes()
 
 void PlayerTank::updateSmoke()
 {
-	m_currentTimePoint = std::chrono::system_clock::now();
-	std::chrono::milliseconds miliseconds200(200);
+	m_currentTimePoint = std::chrono::high_resolution_clock::now();
+	std::chrono::milliseconds miliseconds200(150);
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(m_currentTimePoint - m_previousTimePoint) >= miliseconds200)
 	{
+		std::default_random_engine engine(time(NULL));
+		std::uniform_int_distribution<int> distanse(1, 50);
+
 		DirectX::XMFLOAT2 transSize;
 		DirectX::XMStoreFloat2(&transSize, m_Position);
 		int lastSmoke = m_tankSmokes.size() - 1;
 
 		TankSmoke* smoke1 = m_tankSmokes[lastSmoke]->copy();
-		smoke1->setTranslation(transSize.x-6, transSize.y+50);
+		smoke1->setTranslation(transSize.x, transSize.y +38);
 		smoke1->setRotation(m_bodyAngle);
 		m_tankSmokes.push_back(smoke1);
 
-		TankSmoke* smoke2 = m_tankSmokes[lastSmoke]->copy();
-		smoke2->setTranslation(transSize.x + 6, transSize.y + 50);
+		/*TankSmoke* smoke2 = m_tankSmokes[lastSmoke]->copy();
+		smoke2->setTranslation(transSize.x + 5, transSize.y + 45);
 		smoke2->setRotation(m_bodyAngle);
-		m_tankSmokes.push_back(smoke2);
+		m_tankSmokes.push_back(smoke2);*/
+
 		m_previousTimePoint = m_currentTimePoint;
 	}
 

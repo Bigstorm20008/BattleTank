@@ -26,7 +26,7 @@ void TankSmoke::update(GameObject* gameobject)
 		m_isPlayed = false;
 		return;
 	}
-	m_animatedSmoke->setTransformation(m_rotationMatrix*m_translationMatrix);
+	m_animatedSmoke->setTransformation(m_rotationMatrix * m_translationMatrix);
 	m_animatedSmoke->animate();
 	
 
@@ -70,7 +70,7 @@ void TankSmoke::setTranslation(float x, float y)
 
 void TankSmoke::setRotation(float angle)
 {
-	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(angle, D2D1::Point2F(100 / 2, 0));
+	m_rotationMatrix = D2D1::Matrix3x2F::Rotation(angle, D2D1::Point2F(100 / 2, m_animatedSmoke->getHeight() / 2 - 38));
 }
 
 bool TankSmoke::isPlayed()
