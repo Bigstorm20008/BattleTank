@@ -306,12 +306,13 @@ void SpriteSheet::drawText(WCHAR* text, int size)
 
 void SpriteSheet::animate()
 {
-	if (currentFrame < 85)
+	if (currentFrame < 100)
 	{
 		m_positionInSpriteSheet.left += m_frameWidth;
 		m_positionInSpriteSheet.right += m_frameWidth;
 		++currentFrame;
 	}
+	
 }
 
 

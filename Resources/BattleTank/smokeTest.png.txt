@@ -1,0 +1,6 @@
+SheetWidth = 10100
+SheetHeight = 100
+SpriteWidth = 100
+SpriteHeight = 100
+AnimationFrames = 101
+AngularViews = 1

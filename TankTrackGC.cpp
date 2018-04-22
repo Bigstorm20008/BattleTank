@@ -34,7 +34,7 @@ void TankTrackGC::setPositon(DirectX::XMVECTOR& position)
 	m_Postion = position;
 	DirectX::XMFLOAT2 transSize;
 	DirectX::XMStoreFloat2(&transSize, position);
-	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(transSize.x - m_trackSprite->getWidth() / 2, transSize.y - m_trackSprite->getHeight() / 2));
+	m_translationMatrix = D2D1::Matrix3x2F::Translation(D2D1::SizeF(transSize.x - m_trackSprite->getWidth() / 2, transSize.y ));
 }
 DirectX::XMVECTOR& TankTrackGC::getPosition()
 {
