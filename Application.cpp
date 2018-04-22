@@ -26,12 +26,12 @@ Application::~Application()
 
 int Application::run()
 {
-	std::chrono::high_resolution_clock::time_point m_startGameTimePoint;
-	std::chrono::high_resolution_clock::time_point m_currentGameTimePoint;
-	std::chrono::high_resolution_clock::time_point m_previousTimePoint;
-	std::chrono::high_resolution_clock::time_point m_currentTimePoint;
-	m_currentTimePoint = m_previousTimePoint = m_startGameTimePoint = m_currentGameTimePoint = std::chrono::high_resolution_clock::now();
-	std::chrono::milliseconds miliseconds40(20);
+	//std::chrono::high_resolution_clock::time_point m_startGameTimePoint;
+	//std::chrono::high_resolution_clock::time_point m_currentGameTimePoint;
+	//std::chrono::high_resolution_clock::time_point m_previousTimePoint;
+	//std::chrono::high_resolution_clock::time_point m_currentTimePoint;
+	//m_currentTimePoint = m_previousTimePoint = m_startGameTimePoint = m_currentGameTimePoint = std::chrono::high_resolution_clock::now();
+	//std::chrono::milliseconds miliseconds40(20);
 	MSG msg; 
 	msg.message = WM_NULL;
 	while (msg.message != WM_QUIT)
@@ -47,13 +47,15 @@ int Application::run()
 		}
 		else
 		{
-			m_currentTimePoint = std::chrono::high_resolution_clock::now();
+			/*m_currentTimePoint = std::chrono::high_resolution_clock::now();
 			if (std::chrono::duration_cast<std::chrono::milliseconds>(m_currentTimePoint - m_previousTimePoint) >= miliseconds40)
 			{
 				m_pGame->update();
 				m_pGame->render();
 				m_previousTimePoint = m_currentTimePoint;
-			}
+			}*/
+			m_pGame->update();
+			m_pGame->render();
 		}
 	}
 	return static_cast<int>(msg.wParam);

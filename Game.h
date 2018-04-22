@@ -6,6 +6,7 @@
 #include "SpriteSheet.h"
 #include "PlayerTank.h"
 
+
 class Game
 {
 public:
@@ -30,6 +31,7 @@ protected:
 	TankGraficsComponent* m_playerTankGrafics;
 	TargetPointer* m_targetPonter;
 	TankTrackGC* m_tankTrack;
+	TankSmoke* m_smoke;
 
 	void initInputComponents();
 	void initGraficsComponents();
