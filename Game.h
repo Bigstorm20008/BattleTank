@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "SoundEngine.h"
+#include "SoundFactory.h"
 #include "Grafics2D.h"
 #include "SpriteSheet.h"
 #include "PlayerTank.h"
@@ -21,6 +23,8 @@ public:
 protected:
 	HWND m_gameWindow;
 	Grafics2D* m_gfx;
+	SoundEngine* m_soundEngine;
+
 
 	SpriteSheet* m_background;
 	PlayerTank* m_pPlayerTank;
@@ -33,6 +37,7 @@ protected:
 	TankTrackGC* m_tankTrack;
 	TankSmoke* m_smoke;
 
+	void initSoundsComponents();
 	void initInputComponents();
 	void initGraficsComponents();
 	void initPhysicsComponents();
@@ -40,5 +45,10 @@ protected:
 	void initGameObjects();
 
 	void freeAllResources();
+
+	Sound* m_backgroundMusic;
+	Sound* m_startEngine;
+	Sound* m_explosionSound;
+	Sound* m_shootSound;
 };
 
