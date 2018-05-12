@@ -1,7 +1,7 @@
 #include "PlayerTank.h"
 
 
-PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer, TankTrackGC* tankTrack, TankSmoke* smoke) : GameObject(tankGrafics)
+PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer, TankTrackGC* tankTrack, TankSmoke* smoke, SoundEngine* soundEngine) : GameObject(tankGrafics)
 {
 	m_input = inputComponent;
 	m_graficsComponent = tankGrafics;
@@ -27,17 +27,68 @@ PlayerTank::PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputCompone
 	m_tankSmokes.push_back(m_smoke);
 
 	m_currentTimePoint = m_previousTimePoint = std::chrono::high_resolution_clock::now();
+
+	m_tankState = tankWait;
+	
+	SoundFactory soundFactory(*soundEngine);
+	m_tankWaitSound = soundFactory.createSoundFromFile("Resources\\sounds\\tankWait.wav");
+	m_tankWaitSound->setVolume(0.5f);
+	m_tankWaitSound->play();
+
+	m_tankMovingSound = soundFactory.createSoundFromFile("Resources\\sounds\\tankMoving.wav");
+	m_tankMovingSound->setVolume(0.1f);
 }
 
 
 PlayerTank::~PlayerTank()
 {
+	for (auto& track : m_tankTracks)
+	{
+		delete track;
+		track = nullptr;
+	}
+
+	for (auto& smoke : m_tankSmokes)
+	{
+		delete smoke;
+		smoke = nullptr;
+	}
+	if (m_tankMovingSound)
+	{
+		m_tankMovingSound->stop();
+		delete m_tankMovingSound;
+		m_tankMovingSound = nullptr;
+	}
+	if (m_tankWaitSound)
+	{
+		m_tankWaitSound->stop();
+		delete m_tankWaitSound;
+		m_tankWaitSound = nullptr;
+	}
 }
 
 
 void PlayerTank::update()
 {
 	m_input->update(this);
+	if (m_tankState == tankWait)
+	{
+		m_tankMovingSound->stop();
+		if (!m_tankWaitSound->isPlaying())
+		{
+			m_tankWaitSound->restart();
+		}
+		m_tankWaitSound->play();
+	}
+	if (m_tankState == tankMoving)
+	{
+		m_tankWaitSound->stop();
+		if (!m_tankMovingSound->isPlaying())
+		{
+			m_tankMovingSound->restart();
+		}
+		m_tankMovingSound->play();
+	}
 	m_graficsComponent->update(this);
 	m_targetPointer->update(this);
 	for (auto& track : m_tankTracks)
@@ -45,6 +96,7 @@ void PlayerTank::update()
 		track->update(this);
 	}
 	updateSmoke();
+
 }
 
 void PlayerTank::render()

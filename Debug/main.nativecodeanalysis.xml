@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<DEFECTS><DEFECT><SFA><FILEPATH>d:\mygames\battletank\battletank\</FILEPATH><FILENAME>main.cpp</FILENAME><LINE>6</LINE><COLUMN>11</COLUMN></SFA><DEFECTCODE>28251</DEFECTCODE><DESCRIPTION>Несогласованная аннотация для "WinMain": данный экземпляр содержит нет аннотаций. См. c:\program files (x86)\windows kits\8.1\include\um\winbase.h(905). </DESCRIPTION><FUNCTION>WinMain</FUNCTION><DECORATED>WinMain@16</DECORATED><FUNCLINE>6</FUNCLINE><PATH/></DEFECT></DEFECTS>

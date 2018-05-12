@@ -14,6 +14,7 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 {
 	if (GetAsyncKeyState(VK_LEFT))
 	{
+		
 		DirectX::XMVECTOR& acceleration = gameObject->getAcceleraton();			
 		DirectX::XMMATRIX rotationAroundZ = DirectX::XMMatrixRotationZ(-0.5f*DirectX::XM_PI / 180);
 		acceleration = DirectX::XMVector2Transform(acceleration, rotationAroundZ);
@@ -73,6 +74,18 @@ void PlayerTankInputComponent::update(GameObject* gameObject)
 		tracks.push_back(track);
 	}
 
+	if (GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState(VK_UP) || GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState(VK_LEFT))
+	{
+		if (static_cast<PlayerTank*>(gameObject)->m_tankState == PlayerTank::TankStates::tankWait)
+		{
+			static_cast<PlayerTank*>(gameObject)->m_tankState = PlayerTank::TankStates::tankMoving;
+		}
+		
+	}
+	else
+	{
+		static_cast<PlayerTank*>(gameObject)->m_tankState = PlayerTank::TankStates::tankWait;
+	}
 
 	POINT mousePosition;
 	GetCursorPos(&mousePosition);

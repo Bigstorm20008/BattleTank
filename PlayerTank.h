@@ -16,12 +16,14 @@ class TankSmoke;
 #include "TargetPointer.h"
 #include "TankTrackGC.h"
 #include "TankSmoke.h"
+#include "SoundEngine.h"
+#include "SoundFactory.h"
 
 class PlayerTank :
 	public GameObject
 {
 public:
-	PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer,TankTrackGC* tankTrack,TankSmoke* smoke);
+	PlayerTank(TankGraficsComponent* tankGrafics, PlayerTankInputComponent* inputComponent, TargetPointer* targetPointer, TankTrackGC* tankTrack, TankSmoke* smoke, SoundEngine* soundEngine);
 	virtual ~PlayerTank();
 
 	void update() override;
@@ -34,13 +36,15 @@ public:
 	DirectX::XMVECTOR& getCannonDirection();
 
 	void setTankPosition(int xPos, int yPos);
-	
+	enum TankStates{ tankWait, tankMoving } m_tankState;
 private:
 	PlayerTankInputComponent* m_input;
 	TargetPointer* m_targetPointer;
 	TankSmoke* m_smoke;
 
 	std::vector<TankTrackGC*> m_tankTracks;
+
+	
 
 
 	std::vector<TankSmoke*> m_tankSmokes;
@@ -55,5 +59,8 @@ private:
 	DirectX::XMVECTOR m_cannonDirecton;
 
 	void updateSmoke();
+
+	Sound* m_tankWaitSound;
+	Sound* m_tankMovingSound;
 };
 
