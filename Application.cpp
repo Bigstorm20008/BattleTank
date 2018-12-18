@@ -1,6 +1,6 @@
 #include "Application.h"
-
-
+//ghghghhhhhhhhhhhhhhhhhhh
+//hjhgjgjhgjhgj
 Application::Application()
 {
 	m_mainView = new MainApplicationWindow(L"MainApplicationWindow", L"Battle Tank");
